@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLIA Express × EDT — Malaysia Day 2026</title>
+<style>
+/* ============================================================
+   FONTS
+   ============================================================ */
+@font-face {
+  font-family: 'Dela Gothic One';
+  src: url('Brand Identity/FONTS/DelaGothicOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('Brand Identity/FONTS/SpaceGrotesk-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('Brand Identity/FONTS/SpaceGrotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('Brand Identity/FONTS/SpaceGrotesk-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('Brand Identity/FONTS/SpaceGrotesk-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('Brand Identity/FONTS/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue:    #2D2DFF;
+  --black:   #0A0A0A;
+  --grey:    #8C8C8C;
+  --white:   #FFFFFF;
+  --surface: #111111;
+  --red-my:  #CC0001;
+  --gold:    #FFD700;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--black);
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--white);
+}
+
+/* ============================================================
+   PRESENTATION SHELL
+   ============================================================ */
+.pres {
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SLIDES
+   ============================================================ */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 80px 80px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.65s cubic-bezier(0.77,0,0.175,1),
+              opacity  0.65s ease;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--black);
+}
+.slide.active   { opacity: 1; transform: translateX(0); pointer-events: all; }
+.slide.exit     { opacity: 0; transform: translateX(-100%); }
+
+/* ============================================================
+   SHARED DECORATIVE LAYERS
+   ============================================================ */
+.pg { /* pixel grid */
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none; z-index: 0;
+}
+.scanlines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent, transparent 4px,
+    rgba(0,0,0,.025) 4px, rgba(0,0,0,.025) 5px
+  );
+  pointer-events: none; z-index: 1;
+}
+.z1 { position: relative; z-index: 2; }
+
+/* ============================================================
+   SLIDE HEADER ROW (logo + slide label)
+   ============================================================ */
+.slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  padding-bottom: 0;
+  position: relative; z-index: 2;
+  flex-shrink: 0;
+}
+.slide-header img  { height: 26px; width: auto; opacity: .7; }
+.slide-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--grey);
+}
+
+/* ============================================================
+   SLIDE BODY
+   ============================================================ */
+.slide-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative; z-index: 2;
+  gap: 0;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--blue); letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.h-xl {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(52px,8vw,110px);
+  text-transform: uppercase; letter-spacing: -.04em;
+  line-height: .92; color: var(--white);
+}
+.h-lg {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(36px,5vw,64px);
+  text-transform: uppercase; letter-spacing: -.025em;
+  line-height: 1.0; color: var(--white);
+}
+.h-md {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(22px,3vw,40px);
+  text-transform: uppercase; letter-spacing: -.01em;
+  line-height: 1.1; color: var(--white);
+}
+.sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px; font-weight: 400;
+  color: var(--grey); line-height: 1.65;
+  margin-top: 14px; max-width: 680px;
+}
+.hl { color: var(--blue); }
+.hl-gold { color: var(--gold); }
+.hl-red  { color: var(--red-my); }
+
+/* ============================================================
+   ENTRANCE ANIMATIONS
+   ============================================================ */
+.fu { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.slide.active .fu { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .18s; }
+.d3 { transition-delay: .30s; }
+.d4 { transition-delay: .42s; }
+.d5 { transition-delay: .54s; }
+
+/* ============================================================
+   SHARED GRID / CELL SYSTEM
+   ============================================================ */
+.grid-box {
+  display: grid;
+  gap: 1px;
+  background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+}
+.cell {
+  background: var(--black);
+  padding: 24px 20px;
+  position: relative; overflow: hidden;
+}
+.cell.surface { background: var(--surface); }
+.cell:hover   { background: var(--surface); transition: background .2s; }
+
+/* top blue accent bar animated on slide active */
+.cell.bar-anim::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--blue);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .55s ease;
+}
+.slide.active .cell.bar-anim::before { transform: scaleX(1); }
+.cell.bar-anim:nth-child(2)::before { transition-delay: .12s; }
+.cell.bar-anim:nth-child(3)::before { transition-delay: .24s; }
+.cell.bar-anim:nth-child(4)::before { transition-delay: .36s; }
+
+.ghost-num {
+  position: absolute; top: 12px; right: 14px;
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: 72px; letter-spacing: -.04em; line-height: 1;
+  color: rgba(45,45,255,.07); user-select: none; pointer-events: none;
+}
+
+/* badge */
+.badge {
+  display: inline-flex; align-items: center;
+  background: var(--blue); color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 10px;
+}
+.badge.outline { background: transparent; border: 1px solid var(--blue); color: var(--blue); }
+.badge.gold    { background: var(--gold); color: var(--black); }
+.badge.dark    { background: var(--black); border: 1px solid rgba(255,255,255,.25); }
+
+/* arrow */
+.arr { color: var(--blue); font-weight: 700; }
+
+/* divider */
+.div-line { height: 1px; background: rgba(255,255,255,.15); }
+.div-blue  { height: 1px; background: var(--blue); }
+
+/* ============================================================
+   PROGRESS BAR + NAVIGATION
+   ============================================================ */
+#prog {
+  position: fixed; top: 0; left: 0;
+  height: 3px; background: var(--blue);
+  transition: width .4s ease; z-index: 200;
+}
+.nav {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 20px;
+  z-index: 200;
+}
+.nav-btn {
+  background: transparent; border: 1px solid rgba(255,255,255,.35);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 9px 20px; cursor: pointer;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.nav-btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.nav-btn.pri   { background: var(--blue); border-color: var(--blue); }
+.nav-btn.pri:hover { background: #0000CC; border-color: #0000CC; }
+.nav-ctr {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; color: var(--grey);
+  letter-spacing: .08em; min-width: 56px; text-align: center;
+}
+.hint {
+  position: fixed; top: 26px; right: 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; color: var(--grey); letter-spacing: .06em;
+  z-index: 200; opacity: .6;
+}
+
+/* ============================================================
+   SLIDE 01 — COVER
+   ============================================================ */
+#s1 { padding-left: 0; padding-right: 0; padding-bottom: 0; }
+.flag-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 5px; display: flex; z-index: 10;
+}
+.flag-bar span { flex: 1; }
+.cover-inner {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; padding: 0 80px;
+  position: relative; z-index: 2;
+}
+.cover-logo-row {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 40px;
+}
+.cover-logo-row img { height: 28px; width: auto; opacity: .8; }
+.cover-sep { color: var(--grey); font-family: 'Dela Gothic One'; font-size: 20px; }
+.cover-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 80px 36px; position: relative; z-index: 2;
+}
+.cover-meta {
+  display: flex; align-items: center; gap: 28px; margin-top: 32px; flex-wrap: wrap;
+}
+.meta-item { font-family: 'Space Grotesk'; font-size: 11px; font-weight: 500; color: var(--grey); letter-spacing: .06em; text-transform: uppercase; }
+.meta-item span { display: block; color: var(--white); font-weight: 600; margin-top: 3px; font-size: 13px; }
+.meta-sep { width: 1px; height: 28px; background: rgba(255,255,255,.15); }
+.cover-num {
+  font-family: 'Dela Gothic One'; font-size: 100px;
+  color: rgba(255,255,255,.04); letter-spacing: -.04em; line-height: 1; user-select: none;
+}
+.cover-tagline {
+  font-family: 'Space Grotesk'; font-size: 14px; color: rgba(255,255,255,.4);
+  font-style: italic; letter-spacing: .02em;
+}
+
+/* ============================================================
+   SLIDE 02 — OPPORTUNITY
+   ============================================================ */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.stat-cell { background: var(--black); padding: 22px 18px; display: flex; flex-direction: column; gap: 6px; }
+.stat-big {
+  font-family: 'Dela Gothic One'; font-size: clamp(28px,3.5vw,46px);
+  color: var(--blue); letter-spacing: -.02em; line-height: 1;
+}
+.stat-lbl {
+  font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700;
+  color: var(--grey); letter-spacing: .1em; text-transform: uppercase;
+}
+.stat-desc { font-family: 'Space Grotesk'; font-size: 12px; color: var(--white); line-height: 1.55; margin-top: 4px; }
+.callout {
+  background: var(--blue); padding: 16px 22px;
+  display: flex; align-items: flex-start; gap: 14px; margin-top: 20px;
+}
+.callout p { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.65; }
+
+/* ============================================================
+   SLIDE 03 — PROBLEM
+   ============================================================ */
+.prob-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.prob-cell { background: var(--black); padding: 28px 22px; position: relative; overflow: hidden; }
+.prob-num-ghost {
+  position: absolute; top: 10px; right: 14px;
+  font-family: 'Dela Gothic One'; font-size: 64px;
+  color: rgba(255,255,255,.05); line-height: 1; user-select: none;
+}
+.prob-lbl {
+  font-family: 'Space Grotesk'; font-size: 11px; font-weight: 700;
+  color: var(--blue); letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.prob-body { font-family: 'Space Grotesk'; font-size: 13px; color: var(--grey); line-height: 1.7; }
+.prob-result {
+  border: 1px solid rgba(255,255,255,.2); border-top: 2px solid var(--white);
+  padding: 16px 22px; margin-top: 16px; background: var(--surface);
+  font-family: 'Space Grotesk'; font-size: 13px; color: var(--white);
+  font-style: italic; line-height: 1.65;
+}
+
+/* ============================================================
+   SLIDE 04 — BIG IDEA
+   ============================================================ */
+.pillar-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.pillar-cell { background: var(--black); padding: 22px 18px; display: flex; flex-direction: column; gap: 10px; }
+.pillar-cell:hover { background: var(--surface); transition: background .2s; }
+.pillar-verb { font-family: 'Dela Gothic One'; font-size: 26px; text-transform: uppercase; line-height: 1; }
+.pillar-tech { display: inline-flex; background: var(--blue); color: var(--white); font-family: 'Space Grotesk'; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; align-self: flex-start; margin-top: auto; }
+.tone-note {
+  border: 1px solid rgba(255,255,255,.12); background: var(--surface);
+  padding: 14px 18px; margin-top: 14px;
+  font-family: 'Space Grotesk'; font-size: 13px; color: var(--grey); line-height: 1.6;
+}
+.tone-note strong { color: var(--white); }
+
+/* ============================================================
+   SLIDE 05 — EXPERIENCE DESIGN
+   ============================================================ */
+.zone-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.zone-cell { background: var(--black); padding: 26px 22px; position: relative; overflow: hidden; }
+.zone-ghost {
+  position: absolute; top: 10px; right: 14px;
+  font-family: 'Dela Gothic One'; font-size: 80px;
+  color: rgba(45,45,255,.07); line-height: 1; user-select: none;
+}
+.zone-lbl { font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--blue); text-transform: uppercase; margin-bottom: 8px; }
+.zone-title { font-family: 'Dela Gothic One'; font-size: 20px; text-transform: uppercase; color: var(--white); line-height: 1.1; margin-bottom: 10px; }
+.zone-body { font-family: 'Space Grotesk'; font-size: 13px; color: var(--grey); line-height: 1.7; }
+
+/* ============================================================
+   SLIDE 06 — PROOF
+   ============================================================ */
+.proof-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,.25); border: 1px solid rgba(255,255,255,.25); }
+.proof-item { background: var(--black); padding: 16px 22px; display: flex; align-items: flex-start; gap: 16px; }
+.proof-item:hover { background: var(--surface); transition: background .2s; }
+.proof-arrow { color: var(--blue); font-size: 16px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.proof-name { font-family: 'Space Grotesk'; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.proof-desc { font-family: 'Space Grotesk'; font-size: 12px; color: var(--grey); line-height: 1.6; }
+.proof-tag { display: inline-flex; background: var(--blue); color: var(--white); font-family: 'Space Grotesk'; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+.proof-keyline { background: var(--blue); padding: 14px 22px; font-family: 'Space Grotesk'; font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+
+/* ============================================================
+   SLIDE 07 — WHY EDT
+   ============================================================ */
+.why-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.why-cell { background: var(--black); padding: 32px 26px; display: flex; flex-direction: column; gap: 14px; }
+.why-num { font-family: 'Dela Gothic One'; font-size: 12px; color: var(--blue); letter-spacing: .08em; }
+.why-title { font-family: 'Dela Gothic One'; font-size: 22px; text-transform: uppercase; color: var(--white); line-height: 1.1; }
+.why-body { font-family: 'Space Grotesk'; font-size: 13px; color: var(--grey); line-height: 1.7; }
+.why-tag { border-top: 1px solid var(--blue); padding-top: 14px; font-family: 'Space Grotesk'; font-size: 11px; font-weight: 700; color: var(--blue); letter-spacing: .08em; text-transform: uppercase; margin-top: auto; }
+
+/* ============================================================
+   SLIDE 08 — PACKAGES
+   ============================================================ */
+.pkg-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,.25);
+  border: 1px solid rgba(255,255,255,.25);
+  margin-top: 28px;
+}
+.pkg-card { background: var(--black); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.pkg-card.rec { background: var(--surface); outline: 2px solid var(--blue); outline-offset: -2px; }
+.pkg-head { padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.pkg-name { font-family: 'Dela Gothic One'; font-size: clamp(20px,2.2vw,28px); text-transform: uppercase; color: var(--white); line-height: 1; margin-top: 8px; }
+.pkg-sub { font-family: 'Space Grotesk'; font-size: 11px; color: var(--grey); margin-top: 4px; }
+.pkg-body { padding: 18px 22px; flex: 1; }
+.pkg-feat { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; font-family: 'Space Grotesk'; font-size: 12px; color: var(--grey); line-height: 1.5; }
+.pkg-feat::before { content: '→'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+.pkg-dur { border-top: 1px solid rgba(255,255,255,.1); padding: 12px 22px; font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+.pkg-note { margin-top: 16px; font-family: 'Space Grotesk'; font-size: 11px; color: var(--grey); font-style: italic; }
+
+/* ============================================================
+   SLIDE 09 — TIMELINE
+   ============================================================ */
+.tl-wrap { margin-top: 28px; border: 1px solid rgba(255,255,255,.25); overflow: hidden; }
+.tl-head {
+  display: grid; grid-template-columns: 28% 14% 30% 1fr;
+  background: var(--blue); gap: 0;
+}
+.tl-th {
+  padding: 10px 16px; font-family: 'Space Grotesk'; font-size: 10px;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--white); border-right: 1px solid rgba(255,255,255,.2);
+}
+.tl-row {
+  display: grid; grid-template-columns: 28% 14% 30% 1fr;
+  border-top: 1px solid rgba(255,255,255,.1);
+  transition: background .2s;
+}
+.tl-row:hover { background: var(--surface); }
+.tl-td {
+  padding: 12px 16px; font-family: 'Space Grotesk'; font-size: 12px;
+  color: var(--white); border-right: 1px solid rgba(255,255,255,.08);
+  vertical-align: top;
+}
+.tl-td.phase { font-weight: 700; color: var(--blue); }
+.tl-td.time  { color: var(--grey); font-size: 11px; }
+.tl-td.mile  { color: var(--white); font-size: 11px; }
+.tl-bar-wrap { padding: 10px 16px; display: flex; align-items: center; }
+.tl-bar-bg { background: rgba(255,255,255,.06); height: 6px; width: 100%; border-radius: 0; position: relative; }
+.tl-bar {
+  height: 6px; background: var(--blue); width: 0%;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.tl-bar.gold { background: var(--gold); }
+.pay-note {
+  margin-top: 16px; border: 1px solid rgba(45,45,255,.5);
+  padding: 12px 18px; background: rgba(45,45,255,.06);
+  font-family: 'Space Grotesk'; font-size: 13px; color: var(--white); line-height: 1.5;
+}
+.pay-note strong { color: var(--blue); }
+
+/* ============================================================
+   SLIDE 10 — NEXT STEPS (blue slide)
+   ============================================================ */
+#s10 { background: var(--blue); }
+#s10 .pg {
+  background-image:
+    linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+}
+#s10 .slide-label { color: rgba(255,255,255,.55); }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: rgba(255,255,255,.3);
+  border: 1px solid rgba(255,255,255,.35);
+  margin-top: 24px;
+}
+.step-cell { background: rgba(0,0,204,.35); padding: 24px 22px; display: flex; flex-direction: column; gap: 8px; }
+.step-num { font-family: 'Dela Gothic One'; font-size: 44px; color: rgba(255,255,255,.18); letter-spacing: -.04em; line-height: 1; }
+.step-title { font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700; color: var(--white); }
+.step-body { font-family: 'Space Grotesk'; font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.65; }
+.contact-block {
+  margin-top: 20px; border: 1px solid rgba(255,255,255,.35);
+  padding: 20px 24px; background: rgba(0,0,0,.15);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;
+}
+.contact-name { font-family: 'Dela Gothic One'; font-size: 20px; text-transform: uppercase; color: var(--white); letter-spacing: -.01em; margin-bottom: 6px; }
+.contact-info { font-family: 'Space Grotesk'; font-size: 12px; color: rgba(255,255,255,.8); line-height: 1.9; }
+.closing-q {
+  font-family: 'Space Grotesk'; font-size: 13px; font-style: italic;
+  color: rgba(255,255,255,.9); line-height: 1.75; max-width: 380px;
+  border-left: 3px solid rgba(255,255,255,.4); padding-left: 18px;
+}
+
+/* ============================================================
+   SLIDE 11 — FEEDBACK + BOOKING
+   ============================================================ */
+#s11 { background: var(--black); }
+
+.fb-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.18);
+  margin-top: 22px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* --- window chrome panel --- */
+.fb-panel { background: var(--black); display: flex; flex-direction: column; overflow: hidden; }
+.fb-panel.surface { background: var(--surface); }
+.fb-chrome {
+  background: var(--blue); padding: 9px 14px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.2); flex-shrink: 0;
+}
+.fb-chrome-dots { display: flex; gap: 5px; }
+.fb-chrome-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.45); display: block; }
+.fb-chrome-title {
+  font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--white);
+  flex: 1; text-align: center;
+}
+.fb-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+
+/* --- rating --- */
+.fb-label {
+  font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px;
+}
+.rating-row { display: flex; gap: 8px; }
+.r-btn {
+  width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.2);
+  background: transparent; color: var(--white);
+  font-family: 'Dela Gothic One'; font-size: 16px;
+  cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.r-btn:hover   { border-color: var(--blue); color: var(--blue); }
+.r-btn.active  { background: var(--blue); border-color: var(--blue); color: var(--white); }
+
+/* --- reaction chips --- */
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid rgba(255,255,255,.2); background: transparent;
+  color: var(--grey); font-family: 'Space Grotesk'; font-size: 11px;
+  font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  padding: 7px 14px; cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.chip:hover  { border-color: var(--blue); color: var(--blue); }
+.chip.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
+
+/* --- textarea --- */
+.fb-textarea {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.15);
+  color: var(--white); font-family: 'Space Grotesk'; font-size: 13px;
+  padding: 12px 14px; resize: none; width: 100%; line-height: 1.6;
+  transition: border-color .2s; flex: 1; min-height: 80px;
+}
+.fb-textarea::placeholder { color: var(--grey); }
+.fb-textarea:focus { outline: none; border-color: var(--blue); }
+
+/* --- submit --- */
+.fb-submit {
+  background: var(--blue); border: none; color: var(--white);
+  font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 13px 24px; cursor: pointer; align-self: flex-start;
+  transition: background .15s, transform .1s;
+}
+.fb-submit:hover  { background: #0000CC; }
+.fb-submit:active { transform: scale(.98); }
+.fb-submit:disabled { background: var(--grey); cursor: default; }
+
+/* --- success state --- */
+.fb-success {
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; gap: 14px; text-align: center; padding: 20px;
+}
+.fb-success.show { display: flex; }
+.fb-form-inner.hide { display: none; }
+.success-icon {
+  font-family: 'Dela Gothic One'; font-size: 48px; color: var(--blue); line-height: 1;
+}
+.success-msg { font-family: 'Space Grotesk'; font-size: 14px; color: var(--white); line-height: 1.7; }
+.success-sub { font-family: 'Space Grotesk'; font-size: 12px; color: var(--grey); }
+
+/* --- calendar --- */
+.cal-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 0 12px; border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.cal-month {
+  font-family: 'Dela Gothic One'; font-size: 18px; text-transform: uppercase;
+  color: var(--white); letter-spacing: -.01em;
+}
+.cal-arrow {
+  background: transparent; border: 1px solid rgba(255,255,255,.2);
+  color: var(--white); width: 28px; height: 28px;
+  font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s, border-color .15s;
+}
+.cal-arrow:hover { background: var(--blue); border-color: var(--blue); }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-top: 10px; }
+.cal-day-hdr {
+  font-family: 'Space Grotesk'; font-size: 9px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--grey); text-align: center; padding: 4px 0;
+}
+.cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk'; font-size: 12px; font-weight: 500;
+  color: var(--white); cursor: pointer; transition: background .12s, color .12s;
+  position: relative;
+}
+.cal-day:hover:not(.empty):not(.past) { background: rgba(45,45,255,.3); }
+.cal-day.today { border: 1px solid var(--blue); color: var(--blue); font-weight: 700; }
+.cal-day.selected { background: var(--blue); color: var(--white); }
+.cal-day.has-slot::after {
+  content: ''; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%; background: var(--blue);
+}
+.cal-day.selected.has-slot::after { background: var(--white); }
+.cal-day.empty, .cal-day.past { color: rgba(255,255,255,.15); cursor: default; pointer-events: none; }
+
+/* time slots */
+.slot-section { margin-top: 14px; }
+.slot-title { font-family: 'Space Grotesk'; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; }
+.slot-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.slot {
+  border: 1px solid rgba(255,255,255,.2); background: transparent;
+  color: var(--grey); font-family: 'Space Grotesk'; font-size: 11px;
+  font-weight: 600; letter-spacing: .04em;
+  padding: 6px 12px; cursor: pointer;
+  transition: background .12s, border-color .12s, color .12s;
+}
+.slot:hover  { border-color: var(--blue); color: var(--blue); }
+.slot.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
+.slot.booked { color: rgba(255,255,255,.2); border-color: rgba(255,255,255,.08); cursor: default; text-decoration: line-through; }
+
+.cal-confirm {
+  margin-top: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.cal-confirm-btn {
+  background: var(--blue); border: none; color: var(--white);
+  font-family: 'Space Grotesk'; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 11px 20px; cursor: pointer; transition: background .15s;
+}
+.cal-confirm-btn:hover    { background: #0000CC; }
+.cal-confirm-btn:disabled { background: rgba(255,255,255,.15); color: var(--grey); cursor: default; }
+.cal-mode-toggle { display: flex; gap: 1px; }
+.mode-btn {
+  border: 1px solid rgba(255,255,255,.2); background: transparent;
+  color: var(--grey); font-family: 'Space Grotesk'; font-size: 10px;
+  font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  padding: 6px 10px; cursor: pointer; transition: background .12s, color .12s;
+}
+.mode-btn:hover  { color: var(--white); }
+.mode-btn.active { background: rgba(255,255,255,.1); color: var(--white); border-color: rgba(255,255,255,.35); }
+
+.cal-booked-msg {
+  display: none; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; gap: 12px; text-align: center;
+}
+.cal-booked-msg.show { display: flex; }
+.cal-inner.hide { display: none; }
+</style>
+</head>
+<body>
+
+<div class="pres" id="pres">
+
+  <!-- PROGRESS BAR -->
+  <div id="prog" style="width:10%"></div>
+  <div class="hint">← → to navigate</div>
+
+  <!-- ================================================================
+       SLIDE 01 — COVER
+       ================================================================ -->
+  <div class="slide active" id="s1">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+
+    <!-- Malaysia flag accent bar -->
+    <div class="flag-bar">
+      <span style="background:var(--red-my)"></span>
+      <span style="background:#fff"></span>
+      <span style="background:var(--red-my)"></span>
+      <span style="background:#fff"></span>
+      <span style="background:var(--red-my)"></span>
+    </div>
+
+    <div class="cover-inner">
+      <div class="cover-logo-row fu d1">
+        <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+        <div class="cover-sep">×</div>
+        <div class="badge outline">KLIA Express</div>
+      </div>
+
+      <div class="fu d2">
+        <div class="eyebrow">Malaysia Day 2026 · On-Ground Activation Pitch</div>
+        <div class="h-xl">
+          This <span class="hl">Malaysia</span><br>
+          Day, Make<br>
+          Every Journey<br>
+          A <span class="hl">Celebration</span>
+        </div>
+      </div>
+
+      <div class="fu d3">
+        <p style="font-family:'Space Grotesk';font-size:15px;color:var(--grey);font-style:italic;margin-top:18px;max-width:520px;line-height:1.65;">
+          An Immersive On-Ground Activation Proposal for KLIA Express
+        </p>
+      </div>
+
+      <div class="cover-meta fu d4">
+        <div class="meta-item">Presented by <span>Experiential Design Team</span></div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">Event <span>Malaysia Day 2026</span></div>
+        <div class="meta-sep"></div>
+        <div class="meta-item">Date <span>16 September 2026</span></div>
+      </div>
+    </div>
+
+    <div class="cover-bottom fu d5">
+      <div class="cover-tagline">Confidential · March 2026</div>
+      <div class="cover-num">01</div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 02 — THE OPPORTUNITY
+       ================================================================ -->
+  <div class="slide" id="s2">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">02 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">The Opportunity</div>
+        <div class="h-lg">Malaysia's Front Door Deserves<br>a <span class="hl">Grand Celebration</span></div>
+      </div>
+
+      <div class="stat-grid fu d2">
+        <div class="stat-cell">
+          <div class="stat-big"><span class="counter" data-target="20000" data-fmt="comma" data-sfx="+">0</span></div>
+          <div class="stat-lbl">Daily Passengers</div>
+          <div class="stat-desc">Locals, tourists & returning Malaysians through KLIA Express every day</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big"><span class="counter" data-target="63" data-fmt="" data-sfx=" yrs">0</span></div>
+          <div class="stat-lbl">Years of Unity</div>
+          <div class="stat-desc">Malaysia Day 2026 — a milestone with deep emotional and patriotic resonance</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big" style="font-size:clamp(22px,2.8vw,38px); letter-spacing:-.01em;">KL SENTRAL<br>+ KLIA</div>
+          <div class="stat-lbl">Prime Locations</div>
+          <div class="stat-desc">High-dwell, high-footfall activation zones at both ends of the line</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big" style="font-size:clamp(22px,2.5vw,34px); letter-spacing:-.01em; color:var(--white);">CAPTIVE<br>AUDIENCE</div>
+          <div class="stat-lbl">Emotional State</div>
+          <div class="stat-desc">Travelers are emotionally primed — arriving, departing, reuniting</div>
+        </div>
+      </div>
+
+      <div class="callout fu d3">
+        <span style="color:rgba(255,255,255,.6);font-size:18px;flex-shrink:0;font-weight:700;">→</span>
+        <p><strong>The whitespace:</strong> Most transport hubs treat national days as banner-and-bunting affairs. EDT proposes something that makes the station <em>itself</em> the experience.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 03 — THE PROBLEM
+       ================================================================ -->
+  <div class="slide" id="s3">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">03 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">The Problem</div>
+        <div class="h-lg">Why Traditional Activations<br>No Longer <span class="hl">Cut Through</span></div>
+      </div>
+
+      <div class="prob-grid fu d2">
+        <div class="prob-cell bar-anim">
+          <div class="prob-num-ghost">01</div>
+          <div class="prob-lbl">01 — Forgettable Presence</div>
+          <div class="prob-body">Static banners and screens get ignored. Commuters tune out. There's no moment of genuine interaction or delight — only wallpaper.</div>
+        </div>
+        <div class="prob-cell bar-anim">
+          <div class="prob-num-ghost">02</div>
+          <div class="prob-lbl">02 — Zero Shareability</div>
+          <div class="prob-body">Traditional activations generate no organic social amplification. No one films a flag bunting. KLIA Express misses a massive earned media opportunity.</div>
+        </div>
+        <div class="prob-cell bar-anim">
+          <div class="prob-num-ghost">03</div>
+          <div class="prob-lbl">03 — No Brand Connection</div>
+          <div class="prob-body">Without a creative experience layer, Malaysia Day becomes a generic campaign that doesn't build brand affinity or long-term recall for KLIA Express.</div>
+        </div>
+      </div>
+
+      <div class="prob-result fu d3">
+        <strong style="color:var(--white)">The result:</strong> Millions of passengers walk through. None of them remember KLIA Express played a role in their Malaysia Day.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 04 — THE BIG IDEA
+       ================================================================ -->
+  <div class="slide" id="s4">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">04 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">The Big Idea</div>
+        <div class="h-lg"><span class="hl">"Perjalanan Kita"</span><br>Our Journey Together</div>
+        <p class="sub">Transform KLIA Express stations into a living, breathing Malaysia Day experience — where every traveller becomes part of the national story.</p>
+      </div>
+
+      <div class="pillar-grid fu d2">
+        <div class="pillar-cell">
+          <div class="pillar-verb hl-red">Feel It</div>
+          <div style="font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);">Immersive Projection</div>
+          <div style="font-family:'Space Grotesk';font-size:12px;color:var(--grey);line-height:1.65;">Projection-mapped concourse environments with Malaysia's heritage, landscapes, and cultural icons brought to life.</div>
+          <div class="pillar-tech">Projection Mapping</div>
+        </div>
+        <div class="pillar-cell">
+          <div class="pillar-verb hl">Be In It</div>
+          <div style="font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);">AI Photobooth</div>
+          <div style="font-family:'Space Grotesk';font-size:12px;color:var(--grey);line-height:1.65;">MimpiLab transforms passengers into a Malaysia Day hero — branded, shareable, memorable — in under 30 seconds.</div>
+          <div class="pillar-tech">MimpiLab AI</div>
+        </div>
+        <div class="pillar-cell">
+          <div class="pillar-verb" style="color:var(--white);">Connect</div>
+          <div style="font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);">Avatar Host</div>
+          <div style="font-family:'Space Grotesk';font-size:12px;color:var(--grey);line-height:1.65;">Hoomans.ai guide greeting passengers in Bahasa, English, and Mandarin at key touchpoints throughout.</div>
+          <div class="pillar-tech">Hoomans.ai</div>
+        </div>
+        <div class="pillar-cell">
+          <div class="pillar-verb hl-gold">Carry It</div>
+          <div style="font-family:'Space Grotesk';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);">Branded Keepsake</div>
+          <div style="font-family:'Space Grotesk';font-size:12px;color:var(--grey);line-height:1.65;">Every participant leaves with an AI-generated keepsake photo, instantly shareable via QR/WhatsApp.</div>
+          <div class="pillar-tech">Social Share</div>
+        </div>
+      </div>
+
+      <div class="tone-note fu d3">
+        <strong>Tone:</strong> Warm, proud, future-forward. Technology that amplifies culture — not replaces it.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 05 — EXPERIENCE DESIGN
+       ================================================================ -->
+  <div class="slide" id="s5">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">05 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">The Experience Design</div>
+        <div class="h-lg">What It Looks, Feels,<br>and <span class="hl">Moves Like</span></div>
+      </div>
+
+      <div class="zone-grid fu d2">
+        <div class="zone-cell">
+          <div class="zone-ghost">01</div>
+          <div class="zone-lbl">Zone 01 · KL Sentral Concourse</div>
+          <div class="zone-title">"Gateway of Malaysia"<br>Projection Arc</div>
+          <div class="zone-body">A large-format projection-mapped archway displaying a real-time visual journey through Malaysia's 63 years. Motion-reactive: footsteps trigger ripples in the visuals as passengers walk through it.</div>
+        </div>
+        <div class="zone-cell">
+          <div class="zone-ghost">02</div>
+          <div class="zone-lbl">Zone 02 · KL Sentral + KLIA</div>
+          <div class="zone-title">MimpiLab AI<br>Photobooth Station</div>
+          <div class="zone-body">2–3 units at arrivals/departures. Choose a Malaysia Day theme — National Hero, Cultural Icon, Future Malaysian — and receive a branded AI-generated photo in under 30 seconds.</div>
+        </div>
+        <div class="zone-cell">
+          <div class="zone-ghost">03</div>
+          <div class="zone-lbl">Zone 03 · Key Dwell Zones</div>
+          <div class="zone-title">Hoomans.ai<br>Interactive Host</div>
+          <div class="zone-body">A holographic AI avatar in national colours on an 86" display. Multilingual across BM, English, Mandarin. Shares Malaysia Day trivia, KLIA Express history, drives photobooth participation.</div>
+        </div>
+        <div class="zone-cell">
+          <div class="zone-ghost">04</div>
+          <div class="zone-lbl">Zone 04 · Social Amplification</div>
+          <div class="zone-title">Live Social<br>Amplification Wall</div>
+          <div class="zone-body">Real-time display of Malaysia Day photos taken at the station with #PerjalananKita and #KLIAExpress. Creates a feedback loop of pride and social shareability.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 06 — EDT'S PROOF
+       ================================================================ -->
+  <div class="slide" id="s6">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">06 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">Our Track Record</div>
+        <div class="h-lg">Proven. Deployed.<br><span class="hl">Battle-Tested.</span></div>
+      </div>
+
+      <ul class="proof-list fu d2">
+        <li class="proof-item">
+          <div class="proof-arrow">→</div>
+          <div>
+            <div class="proof-name">MimpiLab for Keeta <span class="proof-tag">Doha, Qatar</span></div>
+            <div class="proof-desc">AI photobooth deployed in high-footfall mall environment — multilingual, real-time branded photo generation, thousands of interactions.</div>
+          </div>
+        </li>
+        <li class="proof-item">
+          <div class="proof-arrow">→</div>
+          <div>
+            <div class="proof-name">Hoomans.ai at MDX 2024 & MYDCF 2023 <span class="proof-tag">National Scale</span></div>
+            <div class="proof-desc">AI-powered avatar hosts at national-scale events — real-time interaction, fully branded, multilingual deployment.</div>
+          </div>
+        </li>
+        <li class="proof-item">
+          <div class="proof-arrow">→</div>
+          <div>
+            <div class="proof-name">IkatMalaysia <span class="proof-tag">Cultural IP</span></div>
+            <div class="proof-desc">EDT's own cultural-tech IP demonstrating deep sensitivity to Malaysian heritage storytelling through immersive media.</div>
+          </div>
+        </li>
+        <li class="proof-item">
+          <div class="proof-arrow">→</div>
+          <div>
+            <div class="proof-name">AR/Festival & CheritAR <span class="proof-tag">Interactive AR</span></div>
+            <div class="proof-desc">EDT's capability to blend Malaysian cultural narrative with interactive digital layers at festival and public scale.</div>
+          </div>
+        </li>
+        <li class="proof-item">
+          <div class="proof-arrow">→</div>
+          <div>
+            <div class="proof-name">360° Projection & Interactive Installations <span class="proof-tag">Large Scale</span></div>
+            <div class="proof-desc">Deployed across corporate and public activations — hardware-agnostic systems designed for high-throughput environments.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="proof-keyline fu d3">→ EDT does not prototype at your event. We bring field-tested systems.</div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 07 — WHY EDT
+       ================================================================ -->
+  <div class="slide" id="s7">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">07 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">Why EDT for KLIA Express</div>
+        <div class="h-lg">The Right Partner<br>for a <span class="hl">National Moment</span></div>
+      </div>
+
+      <div class="why-grid fu d2">
+        <div class="why-cell">
+          <div class="why-num">01 —</div>
+          <div class="why-title">We Understand Malaysia</div>
+          <div class="why-body">EDT is Malaysian-built, culturally fluent. Our work on IkatMalaysia, CheritAR, and WayangMind demonstrates we don't borrow culture — we build from within it. Every activation resonates for a Malaysian audience.</div>
+          <div class="why-tag">Cultural Intelligence →</div>
+        </div>
+        <div class="why-cell">
+          <div class="why-num">02 —</div>
+          <div class="why-title">We Operate at Transit Scale</div>
+          <div class="why-body">Our systems are white-label ready, hardware-agnostic, and designed for high-throughput environments. Festivals, malls, corporate events, public spaces. KL Sentral's footfall is well within our comfort zone.</div>
+          <div class="why-tag">Operational Readiness →</div>
+        </div>
+        <div class="why-cell">
+          <div class="why-num">03 —</div>
+          <div class="why-title">We Maximise Your ROI</div>
+          <div class="why-body">Every EDT activation is built with social amplification in mind. MimpiLab photos are branded. Hoomans.ai interactions are logged. You get experiential impact <em>and</em> measurable data.</div>
+          <div class="why-tag">Measurable Impact →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 08 — PACKAGES
+       ================================================================ -->
+  <div class="slide" id="s8">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">08 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">Activation Packages</div>
+        <div class="h-lg">Tiered Packages to<br>Match Your <span class="hl">Ambition</span></div>
+      </div>
+
+      <div class="pkg-grid fu d2">
+        <!-- A -->
+        <div class="pkg-card">
+          <div class="pkg-head">
+            <div class="badge dark">Package A</div>
+            <div class="pkg-name">"Spark"</div>
+            <div class="pkg-sub">Entry Level</div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-feat">2× MimpiLab AI Photobooth units (KL Sentral)</div>
+            <div class="pkg-feat">Malaysia Day themed photo frames × 3 options</div>
+            <div class="pkg-feat">Social share integration — QR / WhatsApp</div>
+            <div class="pkg-feat">Basic branding on all outputs</div>
+          </div>
+          <div class="pkg-dur">14–20 Sept 2026 &nbsp;·&nbsp; 7 Days</div>
+        </div>
+
+        <!-- B recommended -->
+        <div class="pkg-card rec">
+          <div class="pkg-head">
+            <div class="badge gold">★ Recommended</div>
+            <div class="pkg-name">"Pride"</div>
+            <div class="pkg-sub">Package B · Full Bundle</div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-feat">Everything in Spark</div>
+            <div class="pkg-feat">1× Hoomans.ai AI Avatar Host (holographic display)</div>
+            <div class="pkg-feat">Multilingual — BM / EN / Mandarin</div>
+            <div class="pkg-feat">Social Wall live display</div>
+            <div class="pkg-feat">Deployment at KL Sentral + KLIA</div>
+          </div>
+          <div class="pkg-dur" style="border-top:1px solid rgba(45,45,255,.4)">14–20 Sept 2026 &nbsp;·&nbsp; 7 Days</div>
+        </div>
+
+        <!-- C -->
+        <div class="pkg-card">
+          <div class="pkg-head">
+            <div class="badge dark">Package C</div>
+            <div class="pkg-name">"Merdeka<br>Flagship"</div>
+            <div class="pkg-sub">Full Activation</div>
+          </div>
+          <div class="pkg-body">
+            <div class="pkg-feat">Everything in Pride</div>
+            <div class="pkg-feat">Projection-mapped "Gateway of Malaysia"</div>
+            <div class="pkg-feat">Motion-reactive floor/wall visuals</div>
+            <div class="pkg-feat">Dedicated EDT on-ground crew</div>
+            <div class="pkg-feat">Post-event analytics report</div>
+            <div class="pkg-feat">PR-ready content package (video + stills)</div>
+          </div>
+          <div class="pkg-dur">14–20 Sept 2026 &nbsp;·&nbsp; 7 Days</div>
+        </div>
+      </div>
+
+      <div class="pkg-note fu d3">* Detailed pricing available upon scoping call. All packages modular and negotiable.</div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 09 — TIMELINE
+       ================================================================ -->
+  <div class="slide" id="s9">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">09 / 10</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow">Timeline &amp; Delivery</div>
+        <div class="h-lg">From Brief to Live —<br><span class="hl">How We Get There</span></div>
+      </div>
+
+      <div class="tl-wrap fu d2">
+        <div class="tl-head">
+          <div class="tl-th">Phase</div>
+          <div class="tl-th">Timeline</div>
+          <div class="tl-th">Milestone</div>
+          <div class="tl-th">Progress</div>
+        </div>
+
+        <div class="tl-row">
+          <div class="tl-td phase">Proposal Approval &amp; Kickoff</div>
+          <div class="tl-td time">April 2026</div>
+          <div class="tl-td mile">Scope confirmed, packages locked</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar" data-w="15" style="transition-delay:.3s"></div></div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-td phase">Creative &amp; Content Development</div>
+          <div class="tl-td time">May 2026</div>
+          <div class="tl-td mile">Theme design, scripting, frame artwork</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar" data-w="28" style="transition-delay:.45s"></div></div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-td phase">Tech Build &amp; QA</div>
+          <div class="tl-td time">Jun – Jul 2026</div>
+          <div class="tl-td mile">MimpiLab &amp; Hoomans.ai build + content</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar" data-w="55" style="transition-delay:.6s"></div></div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-td phase">On-Site Setup &amp; Testing</div>
+          <div class="tl-td time">12–14 Sept 2026</div>
+          <div class="tl-td mile">Hardware install, dry run</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar" data-w="78" style="transition-delay:.75s"></div></div></div>
+        </div>
+        <div class="tl-row" style="background:rgba(255,215,0,.04)">
+          <div class="tl-td phase" style="color:var(--gold)">★ Live Activation</div>
+          <div class="tl-td time">14–20 Sept 2026</div>
+          <div class="tl-td mile">Full deployment, EDT crew on-ground</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar gold" data-w="90" style="transition-delay:.9s"></div></div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-td phase">Post-Event Reporting</div>
+          <div class="tl-td time">October 2026</div>
+          <div class="tl-td mile">Analytics, media coverage, social reach</div>
+          <div class="tl-bar-wrap"><div class="tl-bar-bg"><div class="tl-bar" data-w="100" style="transition-delay:1.05s"></div></div></div>
+        </div>
+      </div>
+
+      <div class="pay-note fu d3">
+        <strong>Payment Terms:</strong> 50% mobilisation upfront, 50% upon completion. No hidden costs.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 10 — NEXT STEPS & CONTACT
+       ================================================================ -->
+  <div class="slide" id="s10">
+    <div class="pg"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT" style="filter:brightness(0) invert(1);opacity:.9">
+      <div class="slide-label">10 / 11</div>
+    </div>
+    <div class="slide-body">
+      <div class="fu d1">
+        <div class="eyebrow" style="color:rgba(255,255,255,.7)">Next Steps &amp; Contact</div>
+        <div class="h-lg" style="color:var(--white)">Let's Build<br>Malaysia Day Together</div>
+      </div>
+
+      <div class="steps-grid fu d2">
+        <div class="step-cell">
+          <div class="step-num">01</div>
+          <div class="step-title">Alignment Call</div>
+          <div class="step-body">30-minute scoping session to confirm zones, footfall data, and technical constraints at KL Sentral / KLIA.</div>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">02</div>
+          <div class="step-title">Site Visit</div>
+          <div class="step-body">EDT team visits station to assess projection surfaces, power, and crowd flow.</div>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">03</div>
+          <div class="step-title">Proposal Finalisation</div>
+          <div class="step-body">EDT delivers full scoped proposal with confirmed pricing within 5 working days of site visit.</div>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">04</div>
+          <div class="step-title">LOA / Agreement</div>
+          <div class="step-body">Lock in by May 2026 to meet production timelines. Don't miss the window.</div>
+        </div>
+      </div>
+
+      <div class="contact-block fu d3">
+        <div>
+          <div class="contact-name">Fariz Hanapiah</div>
+          <div class="contact-info">
+            Founder, Experiential Design Team<br>
+            www.weareedt.com &nbsp;·&nbsp; @weareedt<br>
+            contact@weareedt.com
+          </div>
+        </div>
+        <div class="closing-q">
+          "KLIA Express is where Malaysia begins and ends for millions of travellers. Let's make September 16, 2026 the moment they never forget."
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SLIDE 11 — FEEDBACK + BOOKING
+       ================================================================ -->
+  <div class="slide" id="s11">
+    <div class="pg"></div>
+    <div class="scanlines"></div>
+    <div class="slide-header z1">
+      <img src="Brand%20Identity/Logos%20(SVG)/EDT-lockup-dark.svg" alt="EDT">
+      <div class="slide-label">11 / 11</div>
+    </div>
+    <div class="slide-body" style="gap:0">
+
+      <div class="fu d1">
+        <div class="eyebrow">Your Turn</div>
+        <div class="h-lg">Quick Feedback &amp;<br><span class="hl">Book a Meeting</span></div>
+      </div>
+
+      <div class="fb-layout fu d2">
+
+        <!-- ── LEFT: FEEDBACK FORM ───────────────────────── -->
+        <div class="fb-panel">
+          <div class="fb-chrome">
+            <div class="fb-chrome-dots"><span></span><span></span><span></span></div>
+            <div class="fb-chrome-title">feedback.exe</div>
+          </div>
+          <div class="fb-body">
+
+            <!-- Form inner (hidden on submit) -->
+            <div class="fb-form-inner" id="fbForm">
+
+              <!-- Rating -->
+              <div>
+                <div class="fb-label">Rate this proposal</div>
+                <div class="rating-row" id="ratingRow">
+                  <button class="r-btn" data-v="1">1</button>
+                  <button class="r-btn" data-v="2">2</button>
+                  <button class="r-btn" data-v="3">3</button>
+                  <button class="r-btn" data-v="4">4</button>
+                  <button class="r-btn" data-v="5">5</button>
+                </div>
+              </div>
+
+              <!-- Reactions -->
+              <div>
+                <div class="fb-label">Your interest level</div>
+                <div class="chip-row" id="chipRow">
+                  <button class="chip" data-v="very-interested">Very Interested</button>
+                  <button class="chip" data-v="interested">Interested</button>
+                  <button class="chip" data-v="more-info">Need More Info</button>
+                  <button class="chip" data-v="not-now">Not Right Now</button>
+                </div>
+              </div>
+
+              <!-- Package preference -->
+              <div>
+                <div class="fb-label">Preferred package</div>
+                <div class="chip-row" id="pkgRow">
+                  <button class="chip" data-v="spark">Spark</button>
+                  <button class="chip" data-v="pride">Pride ★</button>
+                  <button class="chip" data-v="flagship">Flagship</button>
+                  <button class="chip" data-v="discuss">Let's Discuss</button>
+                </div>
+              </div>
+
+              <!-- Comment -->
+              <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+                <div class="fb-label">Comments or questions</div>
+                <textarea class="fb-textarea" id="fbComment" placeholder="Any thoughts, questions, or specific requirements…" rows="4"></textarea>
+              </div>
+
+              <button class="fb-submit" id="fbSubmit" onclick="submitFeedback()">
+                Submit Feedback →
+              </button>
+            </div>
+
+            <!-- Success state -->
+            <div class="fb-success" id="fbSuccess">
+              <div class="success-icon">✓</div>
+              <div class="success-msg">
+                Thank you for your feedback.<br>
+                <strong>Fariz will follow up within 24 hours.</strong>
+              </div>
+              <div class="success-sub">contact@weareedt.com · @weareedt</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── RIGHT: BOOKING CALENDAR ───────────────────── -->
+        <div class="fb-panel surface">
+          <div class="fb-chrome" style="background:var(--black);border-bottom-color:rgba(255,255,255,.15)">
+            <div class="fb-chrome-dots"><span></span><span></span><span></span></div>
+            <div class="fb-chrome-title">book-a-meeting.exe</div>
+          </div>
+          <div class="fb-body">
+
+            <div class="cal-inner" id="calInner">
+
+              <!-- Mode toggle -->
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+                <div class="fb-label" style="margin:0">Select meeting type</div>
+                <div class="cal-mode-toggle" id="modeToggle">
+                  <button class="mode-btn active" data-m="video">Video Call</button>
+                  <button class="mode-btn" data-m="inperson">In-Person</button>
+                  <button class="mode-btn" data-m="phone">Phone</button>
+                </div>
+              </div>
+
+              <!-- Month nav -->
+              <div class="cal-nav">
+                <button class="cal-arrow" id="calPrev" onclick="calShift(-1)">‹</button>
+                <div class="cal-month" id="calMonthLabel"></div>
+                <button class="cal-arrow" id="calNext" onclick="calShift(1)">›</button>
+              </div>
+
+              <!-- Day grid -->
+              <div>
+                <div class="cal-grid" id="calDayHdrs"></div>
+                <div class="cal-grid" id="calDays"></div>
+              </div>
+
+              <!-- Time slots (shown after day pick) -->
+              <div class="slot-section" id="slotSection" style="display:none">
+                <div class="slot-title" id="slotTitle">Available slots</div>
+                <div class="slot-row" id="slotRow"></div>
+              </div>
+
+              <!-- Confirm -->
+              <div class="cal-confirm">
+                <button class="cal-confirm-btn" id="calConfirmBtn" disabled onclick="confirmBooking()">
+                  Confirm Booking →
+                </button>
+                <div id="calSelection" style="font-family:'Space Grotesk';font-size:11px;color:var(--grey);line-height:1.6;"></div>
+              </div>
+
+            </div><!-- /.cal-inner -->
+
+            <!-- Booked confirmation -->
+            <div class="cal-booked-msg" id="calBooked">
+              <div class="success-icon">📅</div>
+              <div class="success-msg" id="calBookedMsg">Meeting request sent.</div>
+              <div class="success-sub">A calendar invite will be sent to your email by EDT within 2 hours.</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /.fb-layout -->
+    </div>
+  </div>
+
+</div><!-- /.pres -->
+
+
+<!-- NAVIGATION -->
+<div class="nav" id="nav">
+  <button class="nav-btn" onclick="go(-1)">← Prev</button>
+  <div class="nav-ctr" id="ctr">01 / 10</div>
+  <button class="nav-btn pri" onclick="go(1)">Next →</button>
+</div>
+
+
+<script>
+/* ============================================================
+   PRESENTATION ENGINE
+   ============================================================ */
+const slides    = document.querySelectorAll('.slide');
+const prog      = document.getElementById('prog');
+const ctr       = document.getElementById('ctr');
+const TOTAL     = slides.length;
+let current     = 0;
+
+function pad(n) { return String(n).padStart(2,'0'); }
+
+function setProgress() {
+  prog.style.width = ((current + 1) / TOTAL * 100) + '%';
+  ctr.textContent  = pad(current + 1) + ' / ' + pad(TOTAL);
+}
+
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= TOTAL) return;
+
+  slides[current].classList.remove('active');
+  slides[current].classList.add('exit');
+  const exiting = current;
+  setTimeout(() => slides[exiting].classList.remove('exit'), 700);
+
+  current = next;
+  slides[current].classList.add('active');
+  setProgress();
+  onSlideEnter(current);
+}
+
+/* ============================================================
+   PER-SLIDE ANIMATIONS
+   ============================================================ */
+function onSlideEnter(idx) {
+  const slide = slides[idx];
+
+  /* animated counters */
+  slide.querySelectorAll('.counter').forEach(el => {
+    const target = +el.dataset.target;
+    const fmt    = el.dataset.fmt || '';
+    const sfx    = el.dataset.sfx || '';
+    animNum(el, 0, target, 1600, fmt, sfx);
+  });
+
+  /* timeline bars — reset then animate */
+  slide.querySelectorAll('.tl-bar').forEach(bar => {
+    const w = bar.dataset.w || '0';
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    bar.offsetHeight; /* force reflow */
+    bar.style.transition = '';
+    setTimeout(() => { bar.style.width = w + '%'; }, 60);
+  });
+}
+
+function animNum(el, from, to, dur, fmt, sfx) {
+  const t0 = performance.now();
+  function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    const v = Math.round(from + (to - from) * e);
+    el.textContent = (fmt === 'comma' ? v.toLocaleString() : v) + sfx;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ============================================================
+   INPUT
+   ============================================================ */
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); go(-1); }
+});
+
+/* click right half = next, left half = prev */
+document.getElementById('pres').addEventListener('click', e => {
+  if (e.target.closest('.nav')) return;
+  go(e.clientX > window.innerWidth / 2 ? 1 : -1);
+});
+
+/* swipe */
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+});
+
+/* ============================================================
+   FEEDBACK FORM
+   ============================================================ */
+let fbRating = 0, fbChip = '', fbPkg = '';
+
+document.querySelectorAll('#ratingRow .r-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    fbRating = +btn.dataset.v;
+    document.querySelectorAll('#ratingRow .r-btn').forEach(b => b.classList.toggle('active', +b.dataset.v <= fbRating));
+  });
+});
+
+document.querySelectorAll('#chipRow .chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    fbChip = btn.dataset.v;
+    document.querySelectorAll('#chipRow .chip').forEach(b => b.classList.toggle('active', b.dataset.v === fbChip));
+  });
+});
+
+document.querySelectorAll('#pkgRow .chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    fbPkg = btn.dataset.v;
+    document.querySelectorAll('#pkgRow .chip').forEach(b => b.classList.toggle('active', b.dataset.v === fbPkg));
+  });
+});
+
+function submitFeedback() {
+  const comment = document.getElementById('fbComment').value.trim();
+  if (!fbRating && !fbChip && !comment) return;
+  document.getElementById('fbSubmit').disabled = true;
+  setTimeout(() => {
+    document.getElementById('fbForm').classList.add('hide');
+    document.getElementById('fbSuccess').classList.add('show');
+  }, 320);
+}
+
+/* ============================================================
+   BOOKING CALENDAR
+   ============================================================ */
+const MONTHS   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS_HDR = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+// Available slots keyed by "YYYY-M-D"
+const AVAIL_SLOTS = {
+  'future+1':  ['09:00','10:00','14:00','15:00'],
+  'future+2':  ['10:30','11:30','14:30'],
+  'future+4':  ['09:00','11:00','16:00'],
+  'future+5':  ['10:00','14:00','15:30'],
+  'future+7':  ['09:30','11:00','13:00','15:00'],
+  'future+8':  ['10:00','14:00'],
+  'future+9':  ['09:00','10:30','16:30'],
+  'future+11': ['11:00','14:30','15:30'],
+  'future+12': ['09:00','10:00','13:30'],
+};
+// Convert relative keys to real dates from today
+const TODAY     = new Date(); TODAY.setHours(0,0,0,0);
+const slotMap   = {};
+Object.keys(AVAIL_SLOTS).forEach(k => {
+  const offset = parseInt(k.replace('future+',''));
+  const d = new Date(TODAY); d.setDate(d.getDate() + offset);
+  const key = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+  slotMap[key] = AVAIL_SLOTS[k];
+});
+
+let calYear   = TODAY.getFullYear();
+let calMonth  = TODAY.getMonth();
+let selDate   = null;
+let selSlot   = null;
+let meetMode  = 'video';
+
+function calKey(y, m, d) { return y + '-' + m + '-' + d; }
+
+function renderCal() {
+  document.getElementById('calMonthLabel').textContent = MONTHS[calMonth] + ' ' + calYear;
+
+  // Headers
+  const hdrEl = document.getElementById('calDayHdrs');
+  hdrEl.innerHTML = DAYS_HDR.map(d => `<div class="cal-day-hdr">${d}</div>`).join('');
+
+  // Days
+  const first   = new Date(calYear, calMonth, 1).getDay();
+  const numDays = new Date(calYear, calMonth + 1, 0).getDate();
+  let html = '';
+
+  for (let i = 0; i < first; i++) html += '<div class="cal-day empty"></div>';
+
+  for (let d = 1; d <= numDays; d++) {
+    const date   = new Date(calYear, calMonth, d);
+    const isPast = date < TODAY;
+    const isToday = date.getTime() === TODAY.getTime();
+    const key    = calKey(calYear, calMonth, d);
+    const hasSlt = !!slotMap[key];
+    const isSel  = selDate && selDate.getTime() === date.getTime();
+
+    let cls = 'cal-day';
+    if (isPast)  cls += ' past';
+    if (isToday) cls += ' today';
+    if (hasSlt)  cls += ' has-slot';
+    if (isSel)   cls += ' selected';
+
+    html += `<div class="${cls}" data-y="${calYear}" data-m="${calMonth}" data-d="${d}">${d}</div>`;
+  }
+
+  document.getElementById('calDays').innerHTML = html;
+
+  document.querySelectorAll('.cal-day:not(.empty):not(.past)').forEach(el => {
+    el.addEventListener('click', () => {
+      selDate = new Date(+el.dataset.y, +el.dataset.m, +el.dataset.d);
+      selSlot = null;
+      renderCal();
+      renderSlots();
+    });
+  });
+
+  updateCalConfirm();
+}
+
+function renderSlots() {
+  if (!selDate) { document.getElementById('slotSection').style.display = 'none'; return; }
+  const key   = calKey(selDate.getFullYear(), selDate.getMonth(), selDate.getDate());
+  const slots = slotMap[key];
+
+  const sec   = document.getElementById('slotSection');
+  const row   = document.getElementById('slotRow');
+  const title = document.getElementById('slotTitle');
+
+  const label = selDate.toLocaleDateString('en-MY', { weekday:'long', day:'numeric', month:'long' });
+  title.textContent = 'Available slots — ' + label;
+
+  if (!slots || slots.length === 0) {
+    row.innerHTML = '<div style="font-family:\'Space Grotesk\';font-size:12px;color:var(--grey)">No availability on this day. Please pick another.</div>';
+  } else {
+    row.innerHTML = slots.map(t =>
+      `<button class="slot${selSlot === t ? ' active':''}" data-t="${t}">${t}</button>`
+    ).join('');
+    row.querySelectorAll('.slot').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selSlot = btn.dataset.t;
+        row.querySelectorAll('.slot').forEach(b => b.classList.toggle('active', b.dataset.t === selSlot));
+        updateCalConfirm();
+      });
+    });
+  }
+  sec.style.display = 'block';
+  updateCalConfirm();
+}
+
+function updateCalConfirm() {
+  const btn = document.getElementById('calConfirmBtn');
+  const sel = document.getElementById('calSelection');
+  if (selDate && selSlot) {
+    btn.disabled = false;
+    const label = selDate.toLocaleDateString('en-MY', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+    const modeLabel = { video:'Video Call', inperson:'In-Person at KL Sentral', phone:'Phone Call' }[meetMode] || meetMode;
+    sel.innerHTML = `<strong style="color:var(--white)">${label}</strong> at ${selSlot}<br>${modeLabel}`;
+  } else {
+    btn.disabled = true;
+    sel.innerHTML = selDate ? 'Pick a time slot →' : 'Select a date to see slots';
+  }
+}
+
+function calShift(dir) {
+  calMonth += dir;
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  if (calMonth > 11) { calMonth = 0;  calYear++; }
+  selDate = null; selSlot = null;
+  renderCal();
+  document.getElementById('slotSection').style.display = 'none';
+  updateCalConfirm();
+}
+
+function confirmBooking() {
+  if (!selDate || !selSlot) return;
+  const label   = selDate.toLocaleDateString('en-MY', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const modeLabel = { video:'Video Call', inperson:'In-Person', phone:'Phone Call' }[meetMode] || meetMode;
+  document.getElementById('calBookedMsg').innerHTML =
+    `Meeting request sent.<br><strong style="color:var(--white)">${label} at ${selSlot}</strong><br>${modeLabel}`;
+  document.getElementById('calInner').classList.add('hide');
+  document.getElementById('calBooked').classList.add('show');
+}
+
+document.querySelectorAll('#modeToggle .mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    meetMode = btn.dataset.m;
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(b => b.classList.toggle('active', b.dataset.m === meetMode));
+  });
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+setProgress();
+renderCal();
+setTimeout(() => onSlideEnter(0), 250);
+</script>
+</body>
+</html>
